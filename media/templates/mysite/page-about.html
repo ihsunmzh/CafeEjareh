@@ -1,0 +1,74 @@
+{% extends 'shared/other-pages-base.html' %}
+{% load static %}
+
+
+{% block content %}
+<!--Hero-->
+<section class="section section-page section-page-1">
+    <div class="display-spacing">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="el-panel">
+                        <div class="el-panel-body">
+                            <div class="el-panel-title">
+                                <h3>درباره ما</h3>
+                            </div>
+                            <p>رنت کالا یــك پلتفرم اجاره است و فهرست آیتم هایی را براي شما ارائه می دهد كه برای استفاده آنها را به اجاره بگیرید
+                                براي استفاده كوتاه مدت ؛ ما معتقدیم شما به جای خرید های غیر ضروری میتوانید هر چیزی را که به آن نیاز دارید برای هر مدت
+                                زمان ، اجاره کنید ؛ و یا اگر وسیله ی غیر ضروری و کم استفاده ای در منزل موجود دارید را میتوانید برای اجاره آگهی کنید و از
+                            آن درامد کسب کنید.
+                            </p>
+                            <p>فقط کافیست همین الان ثبت نام کنید و آگهیتان را به صورت رایگان به اشتراک بگذارید.</p>
+                            <p>از الان صرفه جویی را شروع کنید ؛</p>
+                            <p>سرچ کن ، پیدا کن ، اجاره کنن</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="el-panel el-panel-teacher-info">
+                        <div class="el-panel-body">
+                            <div class="el-panel-title">
+                                <h3>دسترسی سریع</h3>
+                            </div>
+                            <ul class="el-list">
+                                <li>
+                                    <a href="{% url 'mysite:about' %}">
+                                        <span class="text">درباره ما</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'mysite:page-contact' %}">
+                                        <span class="text">تماس با ما</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'mysite:page-faq' %}">
+                                        <span class="text">سوالات متداول</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'mysite:page-policy' %}">
+                                        <span class="text">قوانین و مقررات</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'weblog:articles' %}">
+                                        <span class="text">آخرین نوشته ها</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'mysite:page-how-it-work' %}">
+                                        <span class="text">چطور کار می کند؟</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--/-->
+{% endblock content %}

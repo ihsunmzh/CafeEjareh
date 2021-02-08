@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html dir="rtl">
+<head>
+	<title>ارسال ایمیل بازیابی با موفقیت انجام شد.</title>
+</head>
+<body>
+	<div style="text-align: right;">
+        {% if status == 100 %}
+        <h2 class="center">{{ msg }}</h2>
+        <h3 class="center">شماره پیگیری خود را یادداشت فرمائید: <strong>{{ refid }}</strong></h3>
+        {% else %}
+            <h2>{{ msg }}</h2>
+        {% endif %}
+        <a class="btn" href="{% url 'accounts:home' %}">صفحه پروفایل</a>
+        <a class="btn" href="{{ item.get_absolute_url }}">بازگشت به صفحه {{ item.title }}</a>
+	</div>
+</body>
+</html>

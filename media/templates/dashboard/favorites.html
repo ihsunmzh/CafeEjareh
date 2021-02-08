@@ -1,0 +1,78 @@
+{% extends 'shared/dashboard-base.html' %}
+{% load static %}
+{% load humanize %}
+
+
+{% block content %}
+<!--Dashboard-->
+<section class="section section-dashboard">
+    <div class="display-spacing">
+        <div class="container">
+            <div class="row">
+                {% include 'partials/_dashboard_navbar.html' %}
+                <div class="col-12 col-sm-12 col-md-12 col-lg-8">
+                    <div class="el-panel el-panel-admin-status">
+                        <div class="el-panel-body">
+                            <div class="el-panel-title">
+                                <h2>آگهی های مورد علاقه</h2>
+                            </div>
+                            <div class="el-products-list">
+                                <ul class="mb--15">
+                                    {% for fav in favorites_list %}
+                                    <li>
+                                        <div class="item d-flex align-items-center">
+                                            {% if not fav.images.all %}
+                                            <div class="image">
+                                                <img src="{% static 'assets/images/products/image-placeholder.jpg' %}" alt="--Alternative--">
+                                            </div>
+                                            {% else %}
+                                            <div class="image">
+                                                <img src="{{fav.images.all.0.file.url}}" alt="{{ l.title }}">
+                                            </div>
+                                            {% endif %}
+                                            <div class="details">
+                                                <h4>{{ fav.title }}</h4>
+                                                <p>
+                                                    <span>وضعیت آگهی:</span>
+                                                    {% if fav.get_status_display == 'برگشت داده شده'%}
+                                                    <span class="text-danger">تایید نشده</span>
+                                                    {% endif %}
+                                                    {% if fav.get_status_display == 'منتشر شده'%}
+                                                    <span class="text-success">تایید شده</span>
+                                                    {% endif %}        
+                                                    {% if fav.is_expired %}     
+                                                    <span class="text-warning">منقضی شده</span>
+                                                    {% endif %}
+                                                </p>
+                                            </div>
+                                            <div class="link">
+                                                <a href="{% url 'accounts:rent-preview' fav.pk %}" class="button button-xs bg-dark-60" target="_black">
+                                                    <span class="text text-light">مشاهده</span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--/-->
+{% endblock content %}
+
+
+{% block script %}
+<!--Scripts-->
+<script src="assets/js/dashboard.js"></script>
+<!--/-->
+<div class="check-user-device">
+    <div class="display-center text-center">
+        <span>دیوایس شما نا معتبر می باشد. به زودی این مشکل رو حل می کنیم.</span>
+    </div>
+</div>
+{% endblock script %}

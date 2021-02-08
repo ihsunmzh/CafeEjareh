@@ -1,0 +1,121 @@
+{% extends 'shared/dashboard-base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+
+{% block content %}
+<!--Dashboard-->
+<section class="section section-dashboard">
+    <div class="display-spacing">
+        <div class="container">
+            <div class="row">
+                {% include 'partials/_dashboard_navbar.html' %}
+                <div class="col-12 col-sm-12 col-md-12 col-lg-8">
+                    <div class="el-panel el-panel-admin-status">
+                        <div class="el-panel-body">
+                            <div class="el-panel-title">
+                                <h2>درج آگهی رایگان</h2>
+                            <form action="" id="createForm" method="post" data-cities-url="{% url 'accounts:ajax_load_cities' %}" enctype="multipart/form-data" novalidate>
+                                {% csrf_token %}
+                                <div class="form-4 row row-sm mb-0">
+                                    <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                                        <div class="form-item">
+                                            <label class="form-label"><span>دسته بندی آگهی را انتخاب کنید</span></label>
+                                            <div class="input-select">
+                                                {{ form.category }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <span class="el-hr"></span>
+                                <div class="form-3 row row-sm mb-0">
+                                    <div class="col-12 col-sm-12 col-md-12 col-lg-6">
+                                        <div class="form-item">
+                                            <label class="form-label"><span>مدت زمان اجاره</span></label>
+                                            <div class="input-select">
+                                                {{ form.rent_type }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-12 col-md-12 col-lg-6">
+                                        <div class="form-item">
+                                            <label class="form-label bg-dark-60">قیمت به تومان</label>
+                                            {{ form.price }}
+                                        </div>
+                                    </div>
+                                </div>
+                                <span class="el-hr"></span>
+                                <div class="form-3 row row-sm mb-0">
+                                    <div class="col-12 col-sm-12 col-md-12 col-lg-6">
+                                        <div class="form-item">
+                                            <label class="form-label">شماره همراه را وارد کنید</label>
+                                            {{ form.mobile_number }}
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-12 col-md-12 col-lg-6">
+                                        <div class="form-item">
+                                            <label class="form-label">شماره ثابت را وارد کنید</label>
+                                            {{ form.home_phone_number }}
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-12 col-md-12 col-lg-6">
+                                        <div class="form-item">
+                                            <label class="form-label"><span>استان خود را انتخاب کنید</span></label>
+                                            <div class="input-select">
+                                                {{ form.state }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-12 col-md-12 col-lg-6">
+                                        <div class="form-item">
+                                            <label class="form-label"><span>شهر خود را انتخاب کنید</span></label>
+                                            <div class="input-select">
+                                                {{ form.city }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <span class="el-hr"></span>
+                                <div class="form-3 row row-sm mb-0">
+                                    <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                                        <div class="form-item">
+                                            <label class="form-label">آدرس را وارد کنید</label>
+                                            {{ form.address }}
+                                        </div>
+                                    </div>
+                                    <div class="eh-uploader">
+                                        {{ form.image }}
+                                    </div>
+                                    <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                                        <div class="form-item">
+                                            <label class="form-label">عنوان آگهی را وارد کنید</label>
+                                            {{ form.title }}
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                                        <div class="form-item">
+                                            <label class="form-label">توضیحات آگهی را بنویسید</label>
+                                            {{ form.description | safe }}
+                                        </div>
+                                    </div>
+                                </div>
+                                <button class="button button-md button-block button-primary" type="submit">
+                                    <span class="text">ارسال آگهی رایگان</span>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--/-->
+{% endblock content %}
+
+
+
+
+{% block js %}
+    <script src="assets/js/dashboard.js"></script>
+{% endblock js %}

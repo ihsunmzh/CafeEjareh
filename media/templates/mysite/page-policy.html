@@ -1,0 +1,95 @@
+{% extends 'shared/other-pages-base.html' %}
+
+
+{% block content %}
+    <!--Hero-->
+    <section class="section section-page section-page-1">
+        <div class="display-spacing">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div class="el-panel">
+                            <div class="el-panel-body">
+                                <div class="el-panel-title">
+                                    <h3>قوانین و مقررات</h3>
+                                </div>
+                                <p>سایت رنت كالا فقط وظیفه نشر اگهي را برعهده دارد و نمیتواند صحت اطلاعات را تضمین كند و هیچگونه تعهد و مسئولیت در قبال اگهي نخواهد داشت.</p>
+                                <p>مسئولیت استفاده از اگهي این سایت بر عهده ي شماست و رنت كالا هیچگونه تعهدي در قبال خسارات مستقیم ،غیر مستقیم ،اتفاقي ،تبعي و كیفري ناشي از استفاده شما از این سایت ندارد.</p>
+                                <p>مسئولیت استفاده از هرگونه متن ،پیام ،توضیح ،اطلاعات، عكس،مشخصات تماس وموارد دیگر و نشر و پخش ان بر عهده ي فرستنده اطلاعات میباشد.</p>
+                                <p class="text-primary"><strong style="font-weight: 700;">قوانین درج اگهي :</strong></p>
+                                <ul class="el-list">
+                                    <li>
+                                        <p>عدم ثبت اگهي مغایر با قوانین جمهوري اسلامي ایران</p>
+                                    </li>
+                                    <li>
+                                        <p>عدم درج اگهي نامناسب و مغایرت محتوا با عرف جامعه</p>
+                                    </li>
+                                    <li>
+                                        <p>عدم استفاده از تصویر اشخاص در ثبت آگهي</p>
+                                    </li>
+                                    <li>
+                                        <p>عدم استفاده از حروف انگلیسي</p>
+                                    </li>
+                                    <li>
+                                        <p>عدم ثبت هرگونه اگهي با محتواي سیاسي و مذهبي كه جنبه تجاري ندارد</p>
+                                    </li>
+                                    <li>
+                                        <p>عدم اجاره برنامه هـاي نرم افزاري ،فیلم و كتاب هـاي فاقد مجوز</p>
+                                    </li>
+                                    <li>
+                                        <p>عدم درج اگهي كه محتواي ان ترویج خشونت است</p>
+                                    </li>
+                                    <li>
+                                        <p>عدم درج اگهي مغایر با شرع و شئونات اسلامي</p>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="el-panel el-panel-teacher-info">
+                            <div class="el-panel-body">
+                                <div class="el-panel-title">
+                                    <h3>دسترسی سریع</h3>
+                                </div>
+                                <ul class="el-list">
+                                    <li>
+                                        <a href="{% url 'mysite:about' %}">
+                                            <span class="text">درباره ما</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{% url 'mysite:page-contact' %}">
+                                            <span class="text">تماس با ما</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{% url 'mysite:page-faq' %}">
+                                            <span class="text">سوالات متداول</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{% url 'mysite:page-policy' %}">
+                                            <span class="text">قوانین و مقررات</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{% url 'weblog:articles' %}">
+                                            <span class="text">آخرین نوشته ها</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{% url 'mysite:page-how-it-work' %}">
+                                            <span class="text">چطور کار می کند؟</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--/-->
+{% endblock content %}

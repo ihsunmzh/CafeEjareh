@@ -1,0 +1,100 @@
+{% extends 'shared/dashboard-base.html' %}
+{% load static %}
+{% load jalali_tags %}
+
+
+{% block content %}
+<!--Dashboard-->
+<section class="section section-dashboard">
+    <div class="display-spacing">
+        <div class="container">
+            <div class="row">
+                {% include 'partials/_dashboard_navbar.html' %}
+                <div class="col-12 col-sm-12 col-md-12 col-lg-8">
+                    <div class="el-panel el-panel-admin-status">
+                        {% if user.is_block or not user.is_author %}
+                        <div class="el-panel-body">
+                            <div class="el-panel-title">
+                                <h2>وضعیت پروفایل شما</h2>
+                                <p class="text-center pt-15">پروفایل کاربری شما مسدود شده است. لطفا با مدیریت تماس بگیرد.</p>
+                            </div>
+                        </div>
+                        {% endif %}
+                        {% if messages %}
+                        <div class="el-panel-body">
+                            {% for m in messages %}
+                            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ m }}</li>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                    </div>
+                    <div class="row">
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+                            <div class="el-panel el-panel-stats-card bg-color-2">
+                                <div class="el-panel-body">
+                                    <p class="text-center text-light">تاریخ عضویت</p>
+                                    <p class="price">
+                                        <span class="value text-light"></span>
+                                        <span class="currency text-light">{{ date_joined|to_jalali:'%y/%m/%d' }}</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+                            <div class="el-panel el-panel-stats-card bg-color-1">
+                                <div class="el-panel-body">
+                                    <p class="text-center text-light">تعداد آگهی های رایگان من</p>
+                                    <p class="price">
+                                        <span class="value text-light">{{ users_posts_count }}</span>
+                                        <span class="currency text-light">آگهی</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+                            <div class="el-panel el-panel-stats-card bg-linkedin">
+                                <div class="el-panel-body">
+                                    <p class="text-center text-light">تعداد آگهی های ویژه من</p>
+                                    <p class="price">
+                                        <span class="value text-light">{{ users_special_posts_count }}</span>
+                                        <span class="currency text-light">آگهی</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+                            <div class="el-panel el-panel-stats-card" style="background-color: orangered;">
+                                <div class="el-panel-body">
+                                    <p class="text-center text-light">وضعیت پروفایل</p>
+                                    <p class="price">
+                                        {% if not user.is_active %}
+                                        <span class="currency text-light">غیر فعال</span>
+                                        {% elif user.is_active %}
+                                        <span class="currency text-light">فعال</span>
+                                        {% endif %}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--/-->
+{% endblock content %}
+
+{% block script %}
+
+    <!--Scripts-->
+    <script src="{% static 'assets/js/dashboard.js' %}"></script>
+    <!--/-->
+    
+    <div class="check-user-device">
+        <div class="display-center text-center">
+            <span>دیوایس شما نا معتبر می باشد. به زودی این مشکل رو حل می کنیم.</span>
+        </div>
+    </div>
+    
+{% endblock script %}

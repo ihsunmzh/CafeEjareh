@@ -1,0 +1,24 @@
+{% extends 'shared/dashboard-base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+
+{% block content %}
+<!--Auth-->
+<section class="section section-auth section-auth-1 overlay-image" style="background-image: url({% static 'assets/images/backgrounds/2.jpg' %})">
+    <div class="display-center">
+        <div class="container">
+            <form method="POST"> {% csrf_token %}
+                <div class="form-panel">
+                    <header class="heading center">
+                        <p class="py-2"></p>
+                        <h5>آیا از حذف آگهی «{{object}}» مطمئن هستید؟</h5>
+                        <input type="submit" value="حذف" class="btn btn-danger">
+                    </header>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+<!--/-->
+{% endblock content %}

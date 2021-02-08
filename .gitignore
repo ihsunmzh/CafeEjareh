@@ -1,0 +1,33 @@
+# Database
+db.sqlite3
+
+# Migrations
+kernel/accounts/migrations/
+kernel/blog/migrations/
+kernel/mysite/migrations/
+kernel/rent/migrations/
+
+
+*.egg-info
+*.pot
+*.py[co]
+
+# Virual Env
+.venv/
+
+
+# VS Code
+.vscode/
+
+
+settings.ini
+
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+
+# Static Files
+mystaticfiles/
+
+media/upload/

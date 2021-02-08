@@ -1,0 +1,113 @@
+{% extends 'shared/other-pages-base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+
+{% block content %}
+	<!--Auth-->
+	<section class="section section-auth section-auth-1 overlay-image" style="background-image: url({% static 'assets/images/backgrounds/1.jpg' %})">
+		<div class="display-center">
+			<div class="container">
+				<div class="form-panel">
+					<header class="heading center">
+						<h2>ثبت نام در سایت</h2>
+						<h3>
+							<a href="{% url 'login' %}" class="text-secondary">حساب کاربری دارید؟ <b>وارد شوید</b>.</a>
+						</h3>
+					</header>
+					{% if form.non_field_errors %}
+					<div class="my-errors">
+						{{form.non_field_errors.as_text}}
+					</div>
+					{% endif %}
+					<form action="" class="form-3" method="post">{% csrf_token %}
+						<div class="row row-xs">
+							<div class="col-12">
+								<div class="form-item">
+									<label class="form-label">پست الکترونیک</label>
+									{{ form.email | add_class:"text-left" }}
+									<!-- <input type="email" name="email" class="text-left"> -->
+									{% if form.email.errors %}
+									<span class="form-error">
+										{{form.email.errors}}
+									</span>
+									{% endif %}
+								</div>
+							</div>
+							<div class="col-12">
+								<div class="form-item">
+									<label class="form-label">نام کاربری</label>
+									{{ form.username | add_class:"text-left" }}
+									<!-- <input type="email" name="email" class="text-left"> -->
+									{% if form.username.errors %}
+									<span class="form-error">
+										{{form.username.errors}}
+									</span>
+									{% endif %}
+								</div>
+							</div>
+							<div class="col-12">
+								<div class="form-item">
+									<label class="form-label">شماره موبایل</label>
+									{{ form.mobile_number | add_class:"text-left" }}
+									{% if form.mobile_number.errors %}
+									<span class="form-error">
+										{{form.mobile_number.errors}}
+									</span>
+									{% endif %}
+								</div>
+							</div>
+							<div class="col-12">
+								<div class="form-item">
+									<label class="form-label">رمز ورود به سایت</label>
+									{{ form.password1 | add_class:"text-left" }}
+									<!-- <input type="password" name="password" class="text-left"> -->
+									{% if form.password1.errors %}
+									<span class="form-error">
+										{{form.password1.errors}}
+									</span>
+									{% endif %}
+								</div>
+							</div>
+							<div class="col-12">
+								<div class="form-item">
+									<label class="form-label">تکرار رمز ورود به سایت</label>
+									{{ form.password2 | add_class:"text-left" }}
+									<!-- <input type="password" name="password" class="text-left"> -->
+									{% if form.password2.errors %}
+									<span class="form-error">
+										{{form.password2.errors}}
+									</span>
+									{% endif %}
+								</div>
+							</div>
+							<div class="col-12">
+								<div class="form-item form-input-q">
+									<div class="row">
+										<div class="col">
+											<div class="input-checkbox">
+												<label class="checkbox-wrap" for="id_accept_policy">
+													<span class="checkbox-label">کلیه <a href="page-policy.html" target="_blank" class="text-primary">قوانین و مقررات</a> را میپذیرم.</span>
+													{{ form.accept_policy }}
+													<span class="checkbox-mark"></span>
+												</label>
+											</div>
+										</div>
+									</div>
+								</div>
+								
+							</div>
+						</div>
+						<hr>
+						<div class="form-item">
+							<button class="button button-md button-block button-secondary" type="submit">
+								<span class="text">ثبت نام در سایت</span>
+							</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!--/-->
+{% endblock content %}

@@ -1,0 +1,142 @@
+{% extends 'shared/other-pages-base.html' %}
+{% load static %}
+{% load widget_tweaks %
+{% load humanize %}
+
+
+{% block content %}
+<!--Search-->
+<section class="section section-search-box overlay-image" style="background-image: url({% static 'assets/images/backgrounds/1.jpg' %});">
+    <div class="display-custom">
+        <div class="container">
+            <div class="el-search-box">
+                <form action="" class="form form-4">
+                    <div class="row row-xs mb-0">
+                        <div class="col-xl-4">
+                            <div class="form-item">
+                                <label class="form-label"><span>دنبال چی می گردی؟</span></label>
+                                {{ form.title }}
+                            </div>
+                        </div>
+                        <div class="col-xl-4">
+                            <div class="form-item">
+                                <label class="form-label"><span>تو چه گروهی؟</span></label>
+                                <div class="input-select">
+                                    {{ form.category }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-4">
+                            <div class="form-item">
+                                <label class="form-label"><span>تو چه شهری؟</span></label>
+                                <div class="input-select">
+                                    {{ form.city }}
+                                    <option value="">&nbsp;</option>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row row-xs">
+                        <div class="col-xl-4">
+                            <div class="form-item">
+                                <div class="input-select">
+                                    {{ form.published_time }}
+                                    <option value="">&nbsp;</option>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-4">
+                            <div class="form-item">
+                                <div class="input-switch">
+                                    <label>
+                                        <span class="label">آگهی های عکس دار</span>
+                                        <div>
+                                            {{ form.is_have_image }}
+                                            <div></div>
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-4">
+                            <button class="button button-md button-block button-primary">
+                                <span class="text">جستجو</span>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+<!--/-->
+<!--Products-->
+<section class="section section-products">
+    <div class="display-">
+        <div class="container">
+            <div class="items">
+                <div class="row row-xs">
+                    {% if object_list %}
+                    {% for object in object_list %}
+                    <!--Item-->
+                    <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3">
+                        <article class="el-card el-card-product">     
+                            <div class="image">
+                                {% if not object.images.all %}
+                                <img src="{% static 'assets/images/products/image-placeholder.jpg' %}" alt="--Alternative--">
+                                {% else %}
+                                <img src="{{object.images.all.0.file.url}}" alt="--Alternative--">
+                                {% endif %}
+                                <ul class="icons icons-right">
+                                    {% if object.is_stair %}
+                                    <li>
+                                        <span class="el-icon el-icon-2">نردبان</span>
+                                    </li>
+                                    {% endif %}
+                                    {% if object.is_instant %}
+                                    <li>
+                                        <span class="el-icon el-icon-1">فوری</span>
+                                    </li>
+                                    {% endif %}
+                                </ul>
+                            </div>
+                            <div class="details">
+                                <h3 class="name">
+                                    <a href="{% url 'accounts:detail' object.pk %}">{{ object.title }}</a>
+                                </h3>
+                            </div>
+                            <div class="footer">
+                                <div class="row row-0">
+                                    <div class="col">
+                                        <p class="place">
+                                            <i class="fa fa-map-marker"></i>
+                                            <span class="text">{{ object.state }}</span>
+                                        </p>
+                                    </div>
+                                    <div class="col">
+                                        <p class="price">
+                                            <span class="label">{{ object.get_rent_type_display }}</span>
+                                            <span class="value">{{ object.price|intcomma|safe }}</span>
+                                            <span class="value-sign">تومان</span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                    <!--/-->
+                    {% endfor %}
+                    {% else %}
+                        <p>آگهی مورد نظر یافت نشد.</p>
+                    {% endif %}
+                </div>
+            </div>
+            
+            {% if is_paginated %}
+                {% include 'partials/_pagination.html' %}
+            {% endif %}
+        </div>
+    </div>
+</section>
+<!--/-->
+{% endblock content %}

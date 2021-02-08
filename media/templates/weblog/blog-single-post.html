@@ -1,0 +1,104 @@
+{% extends 'shared/other-pages-base.html' %}
+{% load static %}
+
+{% block content %}
+{% if object %}
+<!--Blog-->
+<section class="section section-blog-single-post section-blog-single-post-1">
+    <div class="display-spacing">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8">
+                    <div class="page-content page-content-1">
+                        <div class="single-post el-panel el-panel-post">
+                            <div class="image">
+                                <img src="{{ object.thumbnail.url }}" alt="{{ object.title }}">
+                            </div>
+                            <div class="el-panel-body">
+                                <div class="details">
+                                    <h1>{{ object.title }}</h1>
+                                    <p>{{ object.description | safe }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4">
+                    <aside class="page-sidebar page-sidebar-1">
+                        <!--Widget-->
+                        <div class="el-widget el-widget-posts el-panel">
+                            <div class="el-panel-body">
+                                <div class="el-panel-title">
+                                    <h3>وبلاگ</h3>
+                                </div>
+                                <ul>
+                                    {% if latest_articles %}
+                                    {% for article in latest_articles %}
+                                    <li>
+                                        <a href="{% url 'weblog:detail' article.pk %}">
+                                            <div class="row row-sm">
+                                                <div class="col-4">
+                                                    <div class="image overlay-image" style="background-image: url({{ article.thumbnail.url }});"></div>
+                                                </div>
+                                                <div class="col-8">
+                                                    <div class="details">
+                                                        <h4>{{ article.title | truncatewords:20 }}</h4>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    {% endfor %}
+                                    {% endif %}
+                                </ul>
+                            </div>
+                        </div>
+                        <!--/-->
+                        <!--Widget-->
+                        <div class="el-widget el-panel">
+                            <div class="el-panel-body">
+                                <div class="el-panel-title">
+                                    <h3>دسته بندی ها</h3>
+                                </div>
+                                {% if object.category.all %}
+                                {% for cat in object.category.all %}
+                                    <ul class="el-categories el-categories-simple">
+                                        <li>
+                                            <a href="#" rel="tag">
+                                                <i class="fa fa-folder-open"></i>
+                                                <span>{{ cat.name }}</span>
+                                            </a>
+                                        </li>;
+                                        <li>
+                                            <a href="#" rel="tag">
+                                                <i class="fa fa-folder-open"></i>
+                                                <span>دسته بندی املاک و مسکن</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#" rel="tag">
+                                                <i class="fa fa-folder-open"></i>
+                                                <span>دسته بندی خودرو و لوازم جانبی</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#" rel="tag">
+                                                <i class="fa fa-folder-open"></i>
+                                                <span>دسته بندی موبایل و تبلت و لپ تاپ</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                {% endfor %} -->
+                                {% endif %}
+                            </div>
+                        </div>
+                        <!--/-->
+                    </aside>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--/-->
+{% endif %}
+{% endblock %}

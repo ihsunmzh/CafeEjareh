@@ -1,0 +1,352 @@
+{% extends 'shared/base.html' %}
+{% load static %}
+{% load humanize %}
+
+
+{% block content %}
+<!--Hero-->
+<section class="section section-hero section-hero-1 section-wave section-wave-2 overlay-color overlay-image overlay-pattern" style="background-image: url('{% static 'assets/images/backgrounds/2.jpg' %}')">
+    <span class="bg-color bg-dark-60"></span>
+    <span class="bg-pattern bg-pattern-1"></span>
+    <span class="bg-color bg-animation-1"></span>
+    <div class="display-center">
+        <div class="container">
+            <div class="content">
+                <h1>هر چیزی که میخوای رو <span class="text-priamry">اجاره بده</span> یا <span class="text-priamry">اجاره کن</span></h1>
+                <p>در ۳ مرحله اجاره کن: سرچ کن / پیدا کن / اجاره کن.</p>               
+                {% if request.user.is_authenticated %}
+                <a href="{% url 'accounts:rent-create' %}" class="button button-md button-primary">
+                    <span class="text">درج آگهی رایگان</span>
+                </a>
+                {% else %}
+                <a href="{% url 'login' %}" class="button button-md button-primary">
+                    <span class="text">درج آگهی رایگان</span>
+                </a>
+                {% endif %}
+                <a href="{% url 'mysite:search' %}" class="button button-md button-dark">
+                    <span class="text">جستجو‌ آگهی ها</span>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="container">
+            <div class="el-category-icons">
+                <ul>
+                    <!--Item-->
+                    <li>
+                        <a href="http://rentkala.co/search?title=خودرو">
+                            <div class="icon">
+                                <img src="{% static 'assets/images/icons/1.svg' %}" alt="--Alternative--">
+                            </div>
+                            <span class="text">خودرو</span>
+                        </a>
+                    </li>
+                    <!--/-->
+                    <!--Item-->
+                    <li>
+                        <a href="http://rentkala.co/search/?title=ون">
+                            <div class="icon">
+                                <img src="{% static 'assets/images/icons/2.svg' %}" alt="--Alternative--">
+                            </div>
+                            <span class="text">ون</span>
+                        </a>
+                    </li>
+                    <!--/-->
+                    <!--Item-->
+                    <li>
+                        <a href="http://rentkala.co/search/?title=موتور">
+                            <div class="icon">
+                                <img src="{% static 'assets/images/icons/3.svg' %}" alt="--Alternative--">
+                            </div>
+                            <span class="text">موتور</span>
+                        </a>
+                    </li>
+                    <!--/-->
+                    <!--Item-->
+                    <li>
+                        <a href="http://rentkala.co/search/?title=دوچرخه">
+                            <div class="icon">
+                                <img src="{% static 'assets/images/icons/4.svg' %}" alt="--Alternative--">
+                            </div>
+                            <span class="text">دوچرخه</span>
+                        </a>
+                    </li>
+                    <!--/-->
+                    <!--Item-->
+                    <li>
+                        <a href="http://rentkala.co/search/?title=قایق">
+                            <div class="icon">
+                                <img src="{% static 'assets/images/icons/5.svg' %}" alt="--Alternative--">
+                            </div>
+                            <span class="text">قایق</span>
+                        </a>
+                    </li>
+                    <!--/-->
+                    <!--Item-->
+                    <li>
+                        <a href="http://rentkala.co/search/?title=کمپر">
+                            <div class="icon">
+                                <img src="{% static 'assets/images/icons/6.svg' %}" alt="--Alternative--">
+                            </div>
+                            <span class="text">کمپر</span>
+                        </a>
+                    </li>
+                    <!--/-->
+                    <!--Item-->
+                    <li>
+                        <a href="http://rentkala.co/search/?title=لوازم صنعتی">
+                            <div class="icon">
+                                <img src="{% static 'assets/images/icons/7.svg' %}" alt="--Alternative--">
+                            </div>
+                            <span class="text">لوازم صنعتی</span>
+                        </a>
+                    </li>
+                    <!--/-->
+                    <!--Item-->
+                    <li>
+                        <a href="http://rentkala.co/search/?title=کنسول بازی">
+                            <div class="icon">
+                                <img src="{% static 'assets/images/icons/8.svg' %}" alt="--Alternative--">
+                            </div>
+                            <span class="text">کنسول بازی</span>
+                        </a>
+                    </li>
+                    <!--/-->
+                    <!--Item-->
+                    <li>
+                        <a href="http://rentkala.co/search/?title=لوازم کارگاهی">
+                            <div class="icon">
+                                <img src="{% static 'assets/images/icons/9.svg' %}" alt="--Alternative--">
+                            </div>
+                            <span class="text">لوازم کارگاهی</span>
+                        </a>
+                    </li>
+                    <!--/-->
+                    <!--Item-->
+                    <li>
+                        <a href="http://rentkala.co/search/?title=لباس">
+                            <div class="icon">
+                                <img src="{% static 'assets/images/icons/10.svg' %}" alt="--Alternative--">
+                            </div>
+                            <span class="text">لباس</span>
+                        </a>
+                    </li>
+                    <!--/-->
+                    <!--Item-->
+                    <li>
+                        <a href="http://rentkala.co/search/?title=دفتر کار">
+                            <div class="icon">
+                                <img src="{% static 'assets/images/icons/11.svg' %}" alt="--Alternative--">
+                            </div>
+                            <span class="text">دفتر کار</span>
+                        </a>
+                    </li>
+                    <!--/-->
+                    <!--Item-->
+                    <li>
+                        <a href="http://rentkala.co/search/?title=خانه">
+                            <div class="icon">
+                                <img src="{% static 'assets/images/icons/12.svg' %}" alt="--Alternative--">
+                            </div>
+                            <span class="text">خانه</span>
+                        </a>
+                    </li>
+                    <!--/-->
+                    <!--Item-->
+                    <li>
+                        <a href="http://rentkala.co/search/?title=ویلا">
+                            <div class="icon">
+                                <img src="{% static 'assets/images/icons/13.svg' %}" alt="--Alternative--">
+                            </div>
+                            <span class="text">ویلا</span>
+                        </a>
+                    </li>
+                    <!--/-->
+                    <!--Item-->
+                    <li>
+                        <a href="http://rentkala.co/search/?title=مغازه">
+                            <div class="icon">
+                                <img src="{% static 'assets/images/icons/14.svg' %}" alt="--Alternative--">
+                            </div>
+                            <span class="text">مغازه</span>
+                        </a>
+                    </li>
+                    <!--/-->
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<!--/-->
+<!--Slider-->
+<section class="section section-slider-products">
+    <div class="display-spacing">
+        <div class="container">
+            <div class="el-heading el-heading-3">
+                <h2>آخرین آگهی ها</h2>
+                <h3>بیش از {{ ads_number }} آگهی</h3>
+                <button class="button button-lg button-line-dark" type="button">مشاهده همه آگهی ها</button>
+            </div>
+            <div class="el-slider-items">
+                <div class="owl-carousel" data-margin="12" data-center="false" data-nav="true" data-dots="true" data-loop="false" data-breakpoint="600:2,992:3,1200:4">
+                    {% if latest_ads %}
+                    {% for ads in latest_ads %}
+                    <!--Item-->
+                    <div class="item">
+                        <a href="{% url 'accounts:detail' ads.pk %}">
+                            <article class="el-card el-card-product">
+                            {% if not ads.images.all %}
+                                <div class="image" style="background-image: url({% static 'assets/images/products/image-placeholder.jpg' %})">
+                            {% else %}
+                                <div class="image" style="background-image: url({{ads.images.all.0.file.url}})">
+                            {% endif %}
+                                    <ul class="icons icons-right">
+                                        {% if ads.is_stair %}
+                                        <li>
+                                            <span class="el-icon el-icon-2">نردبان</span>
+                                        </li>
+                                        {% endif %}
+                                        {% if ads.is_instant %}
+                                        <li>
+                                            <span class="el-icon el-icon-1">فوری</span>
+                                        </li>
+                                        {% endif %}
+                                    </ul>
+                                </div>
+                                <div class="details">
+                                    <h3 class="name">{{ ads.title }}</h3>
+                                </div>
+                                <div class="footer">
+                                    <div class="row row-0">
+                                        <div class="col">
+                                            <p class="place">
+                                                <i class="fa fa-map-marker"></i>
+                                                <span class="text">{{ ads.state }}</span>
+                                            </p>
+                                        </div>
+                                        <div class="col">
+                                            <p class="price">
+                                                <span class="label">{{ ads.get_rent_type_display }}</span>
+                                                <span class="value">{{ ads.price|intcomma|safe }}</span>
+                                                <span class="value-sign">تومان</span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                        </a>
+                    </div>
+                    <!--/-->
+                    {% endfor %}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--/-->
+<!--Features-->
+<section class="section section-features section-features-1">
+    <div class="container">
+        <div class="row row-xs row-eq-height">
+            <div class="col-md-12 col-lg-7">
+                <div class="item item-1">
+                    <div class="image">
+                        <img src="{% static 'assets/images/features/1.jpg' %}" alt="--Alternative--">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-5">
+                <div class="item item-2">
+                    <div class="image">
+                        <img src="{% static 'assets/images/features/2.jpg' %}" alt="--Alternative--">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-5">
+                <div class="item item-3">
+                    <div class="image">
+                        <img src="{% static 'assets/images/features/3.gif' %}" alt="--Alternative--">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 col-lg-7">
+                <div class="item item-4">
+                    <div class="image">
+                        <img src="{% static 'assets/images/features/4.jpg' %}" alt="--Alternative--">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--/-->
+<!--Slider-->
+<section class="section section-slider-products">
+    <div class="display-spacing">
+        <div class="container">
+            <div class="el-heading el-heading-3">
+                <h2>برترین آگهی ها</h2>
+                <h3>پر بازدیدترین آگهی ها</h3>
+                <button class="button button-lg button-line-dark" type="button">مشاهده همه آگهی ها</button>
+            </div>
+            <div class="el-slider-items">
+                <div class="owl-carousel" data-margin="12" data-center="false" data-nav="true" data-dots="true" data-loop="false" data-breakpoint="600:2,992:3,1200:4">
+                    {% if hit_ads %}
+                    {% for hit in hit_ads %}
+                    <!--Item-->
+                    <div class="item">
+                        <a href="{% url 'accounts:detail' hit.pk %}">
+                            <article class="el-card el-card-product">
+                                {% if not hit.images.all %}
+                                    <div class="image" style="background-image: url({% static 'assets/images/products/image-placeholder.jpg' %})">
+                                {% else %}
+                                    <div class="image" style="background-image: url({{hit.images.all.0.file.url}})">
+                                {% endif %}
+                                <ul class="icons icons-right">
+                                    {% if hit.is_stair %}
+                                        <li>
+                                            <span class="el-icon el-icon-2">نردبان</span>
+                                        </li>
+                                    {% endif %}
+                                    {% if hit.is_instant %}
+                                        <li>
+                                            <span class="el-icon el-icon-1">فوری</span>
+                                        </li>
+                                    {% endif %}
+                                </ul>
+                                </div>
+                                <div class="details">
+                                    <h3 class="name">{{ hit.title }}</h3>
+                                </div>
+                                <div class="footer">
+                                    <div class="row row-0">
+                                        <div class="col">
+                                            <p class="place">
+                                                <i class="fa fa-map-marker"></i>
+                                                <span class="text">{{ hit.state }}</span>
+                                            </p>
+                                        </div>
+                                        <div class="col">
+                                            <p class="price">
+                                                <span class="label">{{ hit.get_rent_type_display }}</span>
+                                                <span class="value">{{ hit.price|intcomma|safe }}</span>
+                                                <span class="value-sign">تومان</span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                        </a>
+                    </div>
+                    <!--/-->
+                    {% endfor %}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--/-->
+{% endblock %}

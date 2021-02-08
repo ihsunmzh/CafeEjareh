@@ -1,0 +1,86 @@
+{% extends 'shared/other-pages-base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+
+{% block content %}
+    <!--Auth-->
+    <section class="section section-auth section-auth-1 overlay-image" style="background-image: url({% static 'assets/images/backgrounds/2.jpg' %})">
+        <div class="display-center">
+            <div class="container">
+                <div class="form-panel">
+                    <header class="heading center">
+                        <h2>ورود به سایت</h2>
+                        <h3>
+                            <a href="{% url 'register' %}" class="text-secondary">حساب کاربری ندارید؟<b> ثبت نام کنید. </b></a>
+                        </h3>
+                    </header>
+                    {% if form.non_field_errors %}
+                    <div class="my-errors">
+                        {{form.non_field_errors.as_text}}
+                    </div>
+                    {% endif %}
+                    <br>
+                    <form action="" method="post" class="form-3">{% csrf_token %}
+                        <div class="row row-xs">
+                            <div class="col-12">
+                                <div class="form-item">
+                                    <label class="form-label">پست الکترونیک یا نام کاربری</label>
+                                    {{ form.username | add_class:"text-left" }}
+                                    <!-- <input type="email" name="email" class="text-left"> -->
+                                    <br>
+                                    {% if form.username.errors %}
+                                    <div class="myerrors">
+                                        {{form.username.errors}}
+                                    </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-item">
+                                    <label class="form-label">رمز ورود به سایت</label>
+                                    {{ form.password | add_class:"text-left" }}
+                                    <!-- <input type="password" name="password" class="text-left"> -->
+                                    <br>
+                                    {% if form.password.errors %}
+                                    <div class="myerrors">
+                                        {{form.password.errors}}
+                                    </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            
+                            
+
+                            <div class="col-12">
+                                <div class="form-item form-input-q">
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="input-checkbox">
+                                                <label class="checkbox-wrap" for="id_remember_me">
+                                                    <span class="checkbox-label">مرا به خاطر بسپار</span>
+                                                    {{ form.remember_me }}
+                                                    <span class="checkbox-mark"></span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="col text-left">
+                                            <a href="{% url 'password_reset' %}" class="input-fp">رمزم را فراموش کرده ام</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="form-item">
+                            <button class="button button-md button-block button-secondary" type="submit">
+                                <span class="texr">ورود به سایت</span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--/-->
+{% endblock content %}

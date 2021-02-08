@@ -1,0 +1,118 @@
+{% extends 'shared/other-pages-base.html' %}
+{% load static %}
+
+
+{% block content %}
+<!--Hero-->
+<section class="section section-page section-page-1">
+    <div class="display-spacing">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="el-panel">
+                        <div class="el-panel-body">
+                            <div class="el-panel-title">
+                                <h3>چطور کار می کند؟</h3>
+                            </div>
+                            <div class="el-list-nums">
+                                <ul>
+                                    <li>
+                                        <span class="count">1</span>
+                                        <div class="body">
+                                            <p>
+                                                <span class="title">رایگان میتوني عضو این سایت بشي</span>
+                                            </p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <span class="count">2</span>
+                                        <div class="body">
+                                            <p>
+                                                <span class="title">لیست رایگان بدون هیچ محدودیت زماني و مكاني قرار میگیره اینجا</span>
+                                            </p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <span class="count">3</span>
+                                        <div class="body">
+                                            <p>
+                                                <span class="title">میتوني پست بزاري از یــك یا چند آیتم براي اجاره رفتن یا اجاره كردن</span>
+                                            </p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <span class="count">4</span>
+                                        <div class="body">
+                                            <p>
+                                                <span class="title">تاریخ و قیمت را براي اجاره انتخاب كن</span>
+                                            </p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <span class="count">5</span>
+                                        <div class="body">
+                                            <p>
+                                                <span class="title">كاربرا مستقیم با هم میتونن تماس بگیرن</span>
+                                            </p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <span class="count">6</span>
+                                        <div class="body">
+                                            <p>
+                                                <span class="title">كالا را تحویل بدید یا تحویل بگیرید</span>
+                                            </p>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="el-panel el-panel-teacher-info">
+                        <div class="el-panel-body">
+                            <div class="el-panel-title">
+                                <h3>دسترسی سریع</h3>
+                            </div>
+                            <ul class="el-list">
+                                <li>
+                                    <a href="{% url 'mysite:about' %}">
+                                        <span class="text">درباره ما</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'mysite:page-contact' %}">
+                                        <span class="text">تماس با ما</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'mysite:page-faq' %}">
+                                        <span class="text">سوالات متداول</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'mysite:page-policy' %}">
+                                        <span class="text">قوانین و مقررات</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'weblog:articles' %}">
+                                        <span class="text">آخرین نوشته ها</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'mysite:page-how-it-work' %}">
+                                        <span class="text">چطور کار می کند؟</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--/-->
+{% endblock content %}

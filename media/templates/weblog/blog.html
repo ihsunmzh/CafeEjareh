@@ -1,0 +1,42 @@
+{% extends 'shared/other-pages-base.html' %}
+{% load static %}
+
+
+{% block content %}     
+    <!--Blog-->
+    <section class="section section-blog section-blog-1">
+        <div class="display-spacing">
+            <div class="container">
+                <div class="row row-md masonry mb--30" data-target=".el-card" data-col-xs="12" data-col-md="6" data-col-lg="4" data-col-xl="4">
+                    <!--Post-->
+                    <div class="col-12 col-md-6 col-lg-4 col-xl-4">
+                        {% if articles %}
+                        {% for article in articles %}
+                        <article class="el-card el-card-post">
+                            <div class="image">
+                                <img src="{{ article.thumbnail.url }}" alt="{{ article.title }}">
+                            </div>
+                            <div class="details">
+                                <h3>
+                                    <a href="{% url 'weblog:detail' article.pk %}">{{ article.title | truncatewords:12 | safe }}</a>
+                                </h3>
+                                <p>{{ article.description | truncatewords:32 | safe }}</p>
+                            </div>
+                        </article>
+                        {% endfor %}
+                        {% else %}
+                            <p>مقاله ای وجود ندارد</p>
+                        {% endif %}
+                    </div>
+                    <!--/-->
+                </div>
+                <div class="text-center pt-30">
+                {% if is_paginated %}
+                    {% include 'partials/_pagination.html' %}
+                {% endif %}
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--/-->
+{% endblock content %}

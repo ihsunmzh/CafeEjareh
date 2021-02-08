@@ -1,0 +1,108 @@
+{% extends 'shared/other-pages-base.html' %}
+{% load widget_tweaks %}
+
+
+{% block content %}
+    <!--Hero-->
+    <section class="section section-page section-page-1">
+        <div class="display-spacing">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div class="el-panel">
+                            <div class="el-panel-body">
+                                <div class="el-panel-title">
+                                    <h3>تماس با ما</h3>
+                                </div>
+                                <p>کاربر عزیز؛ چنانچه در استفاده از سایت با اشکال مواجه شده اید، مشکل خود را با پر کردن کادر های زیر به ما اطلاع دهید و با
+                                    ما در ارتباط باشید.
+                                    تیم ما در سریع ترین زمان ممکن پاسخگوی شما خواهد بود.</p>
+                                <hr>
+                                {% if messages %}
+                                {% for message in messages %}
+                                    <div class="text-center alert alert-{{ message.tags }}">
+                                        {{ message|safe }}
+                                    </div>
+                                {% endfor %}
+                                {% endif %}
+                                <br>
+                                <form action="" class="form-3" method="post">{% csrf_token %}
+                                    <div class="row row-sm">
+                                        <div class="col-12 col-sm-12 col-md-12 col-lg-6">
+                                            <div class="form-item">
+                                                <label class="form-label">نام و نام خانوادگی</label>
+                                                {{ form.full_name }}
+                                                <!-- <input type="text" name="text"> -->
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-sm-12 col-md-12 col-lg-6">
+                                            <div class="form-item">
+                                                <label class="form-label">پست الکترونیک</label>
+                                                {{ form.email }}
+                                                <!-- <input type="text" name="text"> -->
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                                            <div class="form-item">
+                                                <label class="form-label">پیام خود را در این کادر بنویسید</label>
+                                                {{ form.text }}
+                                                <!-- <textarea name="" id="" cols="30" rows="10"></textarea> -->
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <button class="button button-md button-secondary">
+                                                <span class="text">ارسال فرم تماس</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="el-panel el-panel-teacher-info">
+                            <div class="el-panel-body">
+                                <div class="el-panel-title">
+                                    <h3>دسترسی سریع</h3>
+                                </div>
+                                <ul class="el-list">
+                                    <li>
+                                        <a href="{% url 'mysite:about' %}">
+                                            <span class="text">درباره ما</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{% url 'mysite:page-contact' %}">
+                                            <span class="text">تماس با ما</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{% url 'mysite:page-faq' %}">
+                                            <span class="text">سوالات متداول</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{% url 'mysite:page-policy' %}">
+                                            <span class="text">قوانین و مقررات</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{% url 'weblog:articles' %}">
+                                            <span class="text">آخرین نوشته ها</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{% url 'mysite:page-how-it-work' %}">
+                                            <span class="text">چطور کار می کند؟</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--/-->   
+{% endblock content %}

@@ -1,0 +1,514 @@
+{% extends 'shared/dashboard-base.html' %}
+{% load static %}
+{% load humanize %}
+
+
+{% block content %}    
+{% if product %}    
+<section class="section-dashboard-management">
+    <div class="display-spacing display-spacing-plus">
+        <div class="dashboard-box">
+            <div class="el-tabs">
+                <!--Links-->
+                <div class="el-tabs-links container">
+                    <ul>
+                        <li class="active" data-tab-link="dashboard-mange-product-tab-1">
+                            <span class="text">پیش نمایش</span>
+                        </li>
+                        <li data-tab-link="dashboard-manage-product-tab-2">
+                            <span class="text">ارتقای آگهی</span>
+                        </li>
+                    </ul>
+                    <div class="dashboard-tabs-buttons">
+                        <a href="{% url 'accounts:rent-delete' product.pk %}">
+                            <button class="button button-md bg-danger"">
+                                <span class="text text-light">حذف آگهی</span>
+                            </button>
+                        </a>
+                    </div>
+                </div>
+                <!--/-->
+                <!--Content-->
+                <div class="el-tabs-content">
+                    <ul>
+                        <li class="active" data-tab-content="dashboard-mange-product-tab-1">
+                            <!--Product-->
+                            <section class="section section-product section-product-1">
+                                <!--Description-->
+                                <div class="mb-space-half">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-xl-6">
+                                                <div class="product-details">
+                                                    <div class="shareit">
+                                                        <ul class="el-social-icons block">
+                                                            <li class="bg-facebook">
+                                                                <a href="#">
+                                                                    <i class="fa fa-facebook"></i>
+                                                                </a>
+                                                            </li>
+                                                            <li class="bg-twitter">
+                                                                <a href="#">
+                                                                    <i class="fa fa-twitter"></i>
+                                                                </a>
+                                                            </li>
+                                                            <li class="bg-linkedin">
+                                                                <a href="#">
+                                                                    <i class="fa fa-linkedin"></i>
+                                                                </a>
+                                                            </li>
+                                                            <li class="bg-instagram">
+                                                                <a href="#">
+                                                                    <i class="fa fa-instagram"></i>
+                                                                </a>
+                                                            </li>
+                                                            <li class="bg-pinterest">
+                                                                <a href="#">
+                                                                    <i class="fa fa-pinterest"></i>
+                                                                </a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="details">
+                                                        {% if product.category.parent %}
+                                                        <p>در گروه {{ product.category.parent }}</p>
+                                                        {% else %}
+                                                        <p>در گروه {{ product.category }}</p>
+                                                        {% endif %}
+                                                        <h1>{{ product.title }}</h1>
+                                                        <p>{{ product.description | safe }}</p>
+                                                        <div class="product-table">
+                                                            <ul>
+                                                                <li>
+                                                                    <span class="var">دسته بندی</span>
+                                                                    <span class="val">{{ product.category }}</span>
+                                                                </li>
+                                                                <li>
+                                                                    <span class="var">زمان آگهی</span>
+                                                                    <span class="val">{{ product.created_at|naturaltime }}</span>
+                                                                </li>
+                                                                <li>
+                                                                    <span class="var">قیمت اجاره ای</span>
+                                                                    <span class="val">{{ product.price|intcomma }}</span>
+                                                                </li>
+                                                                <li>
+                                                                    <span class="var">مدت زمان اجاره</span>
+                                                                    <span class="val">{{ product.get_rent_type_display }}</span>
+                                                                </li>
+                                                                <li>
+                                                                    <span class="var">آدرس آگهی دهنده</span>
+                                                                    <span class="val">{{ product.address|safe }}</span>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                    <button class="button button-md button-block button-primary button-toggle-value">
+                                                        <span class="text">دریافت اطلاعات تماس</span>
+                                                        <span class="show-me">{{ object.mobile_number }}</span>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-6">
+                                                <div class="product-gallery">
+                                                    <div class="el-carousel-product">
+                                                        <div class="owl-carousel" data-items="1" data-loop="true" data-dots="true" data-nav="true">
+                                                            {% if not product.images.all %}
+                                                                <div class="el-carousel-product-item">
+                                                                    <div class="image overlay-image" style="background-image: url('{% static 'assets/images/products/image-placeholder.jpg' %}');"></div>
+                                                                </div>
+                                                            {% endif %}
+                                                            {% for img in product.images.all %}
+                                                                <div class="el-carousel-product-item">
+                                                                    <div class="image overlay-image" style="background-image: url('{{ img.file.url }}');"></div>
+                                                                </div>
+                                                            {% endfor %}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--/-->
+                                <!--Details-->
+                                <div class="container">
+                                    <div class="el-tabs">
+                                        <!--Links-->
+                                        <div class="el-tabs-links">
+                                            <ul>
+                                                <li class="active" data-tab-link="tab-1">
+                                                    <span class="text">مشخصات کالا</span>
+                                                </li>
+                                                <li data-tab-link="tab-2">
+                                                    <span class="text">توضیحات کالا</span>
+                                                </li>
+                                                <li data-tab-link="tab-3">
+                                                    <span class="text">دیدگاه کاربران</span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <!--/-->
+                                        <!--Content-->
+                                        <div class="el-tabs-content">
+                                            <ul>
+                                                <li class="active" data-tab-content="tab-1">
+                                                    <div class="content">
+                                                        <h2>مشخصات فنی محصول</h2>
+                                                        <table class="el-table">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td class="a-right specname">گروه</td>
+                                                                    
+                                                                    {% if product.category.parent %}
+                                                                        <td class="a-left specvalue">{{ product.category.parent }}</td>
+                                                                    {% else %}
+                                                                        <td class="a-left specvalue">{{ product.category }}</td>
+                                                                    {% endif %}
+                                                                        
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="a-right specname">دسته بندی</td>
+                                                                    <td class="a-left specvalue">{{ product.category }}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="a-right specname">زمان ایجاد آگهی</td>
+                                                                    <td class="a-left specvalue">{{ product.created_at|naturaltime }}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="a-right specname">بازه زمانی اجاره کالا</td>
+                                                                    <td class="a-left specvalue">این کالا به صورت {{ product.get_rent_type_display }} اجاره داده می شود.</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="a-right specname">قیمت اجاره کالا</td>
+                                                                    <td class="a-left specvalue">{{ product.get_rent_type_display }}  {{ object.price|intcomma }} تومان</td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </li>
+                                                <li data-tab-content="tab-2">
+                                                    <div class="content">
+                                                        <h2>توضیحات کامل در مورد آگهی</h2>
+                                                        <p>{{ product.description | safe }}</p>
+                                                    </div>
+                                                </li>
+                                                <li data-tab-content="tab-3">
+                                                    <div class="content">
+                                                        <div class="row">
+                                                            <div class="col-12 col-sm-12 col-md-12 col-lg-6">
+                                                                <h2>دیدگاه خود را درباره این آگهی بنویسید.</h2>
+                                                                <form action="" method="" class="form-3">
+                                                                    <hr>
+                                                                    <div class="row row-xs">
+                                                                        <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+                                                                            <div class="form-item">
+                                                                                <label class="form-label">
+                                                                                    <span>نام و نام خانوادگی</span>
+                                                                                </label>
+                                                                                <input type="text" name="name">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+                                                                            <div class="form-item">
+                                                                                <label class="form-label">
+                                                                                    <span>امتیاز شما به این کالا</span>
+                                                                                </label>
+                                                                                <div class="input-default-style el-stars-score">
+                                                                                    <fieldset class="rating">
+                                                                                        <!---->
+                                                                                        <input type="radio" id="star5" name="rating" value="5" />
+                                                                                        <label class="full" for="star5" title="Awesome - 5 stars"></label>
+                                                                                        <!--/-->
+                                                                                        <!---->
+                                                                                        <input type="radio" id="star4half" name="rating" value="4.5" />
+                                                                                        <label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
+                                                                                        <!--/-->
+                                                                                        <!---->
+                                                                                        <input type="radio" id="star4" name="rating" value="4" />
+                                                                                        <label class="full" for="star4" title="Pretty good - 4 stars"></label>
+                                                                                        <!--/-->
+                                                                                        <!---->
+                                                                                        <input type="radio" id="star3half" name="rating" value="3.5" />
+                                                                                        <label class="half" for="star3half" title="Meh - 3.5 stars"></label>
+                                                                                        <!--/-->
+                                                                                        <!---->
+                                                                                        <input type="radio" id="star3" name="rating" value="3" />
+                                                                                        <label class="full" for="star3" title="Meh - 3 stars"></label>
+                                                                                        <!--/-->
+                                                                                        <!---->
+                                                                                        <input type="radio" id="star2half" name="rating" value="2.5" />
+                                                                                        <label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
+                                                                                        <!--/-->
+                                                                                        <!---->
+                                                                                        <input type="radio" id="star2" name="rating" value="2" />
+                                                                                        <label class="full" for="star2" title="Kinda bad - 2 stars"></label>
+                                                                                        <!--/-->
+                                                                                        <!---->
+                                                                                        <input type="radio" id="star1half" name="rating" value="1.5" />
+                                                                                        <label class="half" for="star1half" title="Meh - 1.5 stars"></label>
+                                                                                        <!--/-->
+                                                                                        <!---->
+                                                                                        <input type="radio" id="star1" name="rating" value="1" />
+                                                                                        <label class="full" for="star1" title="Sucks big time - 1 star"></label>
+                                                                                        <!--/-->
+                                                                                        <!---->
+                                                                                        <input type="radio" id="starhalf" name="rating" value=".5" />
+                                                                                        <label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
+                                                                                        <!--/-->
+                                                                                    </fieldset>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-12">
+                                                                            <div class="form-item">
+                                                                                <label class="form-label">
+                                                                                    <span>دیدگاه خود را بنویسید</span>
+                                                                                </label>
+                                                                                <textarea name="text" cols="30" rows="10"></textarea>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-12">
+                                                                            <button class="button button-md button-block button-secondary" type="submit">
+                                                                                <span class="text">اسال دیدگاه</span>
+                                                                            </button>
+                                                                        </div>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                            <div class="col-12 col-sm-12 col-md-12 col-lg-6">
+                                                                <h2>دیدگاه کاربران درباره این آگهی<span> (3 دیدگاه) </span></h2>
+                                                                <div class="el-comments">
+                                                                    <ul>
+                                                                        <li>
+                                                                            <div class="row">
+                                                                                <div class="col-12 col-lg-2">
+                                                                                    <div class="el-comments-avatar">
+                                                                                        <img src="{% static 'assets/images/people/1.jpg' %}" alt="--Alternative--">
+                                                                                    </div>
+                                                                                    <span class="el-comments-author">کوروش نیستانی</span>
+                                                                                </div>
+                                                                                <div class="col-12 col-lg-10">
+                                                                                    <div class="el-comments-info">
+                                                                                        <div class="row">
+                                                                                            <div class="col-6">
+                                                                                                <span class="el-comments-date">1397/12/11</span>
+                                                                                            </div>
+                                                                                            <div class="col-6 text-left d-rtl">
+                                                                                                <ul class="el-stars">
+                                                                                                    <li>
+                                                                                                        <i class="fa fa-star"></i>
+                                                                                                    </li>
+                                                                                                    <li>
+                                                                                                        <i class="fa fa-star"></i>
+                                                                                                    </li>
+                                                                                                    <li>
+                                                                                                        <i class="fa fa-star"></i>
+                                                                                                    </li>
+                                                                                                    <li>
+                                                                                                        <i class="fa fa-star"></i>
+                                                                                                    </li>
+                                                                                                    <li>
+                                                                                                        <i class="fa fa-star-o"></i>
+                                                                                                    </li>
+                                                                                                </ul>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="el-comments-content">
+                                                                                        <p>بسته بندیه خود شرکت کنکو کمی ضعیفه به قدری که وقتی به دستم رسید گوشه ی پایینی بسته بندی پاره شده بود و ترسیدم که نکنه ضربه خرده باشه و خودکار ها رو آسیب زده باشه. از این مشکل که بگذریم باید بگم که تمامی رنگ ها سالم بودن و نوک خودکار ها دارای پلمپ بود.</p>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </li>
+                                                                        <li>
+                                                                            <div class="row">
+                                                                                <div class="col-12 col-lg-2">
+                                                                                    <div class="el-comments-avatar">
+                                                                                        <img src="{% static 'assets/images/people/1.jpg' %}" alt="--Alternative--">
+                                                                                    </div>
+                                                                                    <span class="el-comments-author">کوروش نیستانی</span>
+                                                                                </div>
+                                                                                <div class="col-12 col-lg-10">
+                                                                                    <div class="el-comments-info">
+                                                                                        <div class="row">
+                                                                                            <div class="col-6">
+                                                                                                <span class="el-comments-date">1397/12/11</span>
+                                                                                            </div>
+                                                                                            <div class="col-6 text-left d-rtl">
+                                                                                                <ul class="el-stars">
+                                                                                                    <li>
+                                                                                                        <i class="fa fa-star"></i>
+                                                                                                    </li>
+                                                                                                    <li>
+                                                                                                        <i class="fa fa-star"></i>
+                                                                                                    </li>
+                                                                                                    <li>
+                                                                                                        <i class="fa fa-star"></i>
+                                                                                                    </li>
+                                                                                                    <li>
+                                                                                                        <i class="fa fa-star"></i>
+                                                                                                    </li>
+                                                                                                    <li>
+                                                                                                        <i class="fa fa-star-o"></i>
+                                                                                                    </li>
+                                                                                                </ul>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="el-comments-content">
+                                                                                        <p>بسته بندیه خود شرکت کنکو کمی ضعیفه به قدری که وقتی به دستم رسید گوشه ی پایینی بسته بندی پاره شده بود و ترسیدم که نکنه ضربه خرده باشه و خودکار ها رو آسیب زده باشه. از این مشکل که بگذریم باید بگم که تمامی رنگ ها سالم بودن و نوک خودکار ها دارای پلمپ بود.</p>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </li>
+                                                                        <li>
+                                                                            <div class="row">
+                                                                                <div class="col-12 col-lg-2">
+                                                                                    <div class="el-comments-avatar">
+                                                                                        <img src="{% static 'assets/images/people/1.jpg' %}" alt="--Alternative--">
+                                                                                    </div>
+                                                                                    <span class="el-comments-author">کوروش نیستانی</span>
+                                                                                </div>
+                                                                                <div class="col-12 col-lg-10">
+                                                                                    <div class="el-comments-info">
+                                                                                        <div class="row">
+                                                                                            <div class="col-6">
+                                                                                                <span class="el-comments-date">1397/12/11</span>
+                                                                                            </div>
+                                                                                            <div class="col-6 text-left d-rtl">
+                                                                                                <ul class="el-stars">
+                                                                                                    <li>
+                                                                                                        <i class="fa fa-star"></i>
+                                                                                                    </li>
+                                                                                                    <li>
+                                                                                                        <i class="fa fa-star"></i>
+                                                                                                    </li>
+                                                                                                    <li>
+                                                                                                        <i class="fa fa-star"></i>
+                                                                                                    </li>
+                                                                                                    <li>
+                                                                                                        <i class="fa fa-star"></i>
+                                                                                                    </li>
+                                                                                                    <li>
+                                                                                                        <i class="fa fa-star-o"></i>
+                                                                                                    </li>
+                                                                                                </ul>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="el-comments-content">
+                                                                                        <p>بسته بندیه خود شرکت کنکو کمی ضعیفه به قدری که وقتی به دستم رسید گوشه ی پایینی بسته بندی پاره شده بود و ترسیدم که نکنه ضربه خرده باشه و خودکار ها رو آسیب زده باشه. از این مشکل که بگذریم باید بگم که تمامی رنگ ها سالم بودن و نوک خودکار ها دارای پلمپ بود.</p>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <!--/-->
+                                    </div>
+                                </div>
+                                <!--/-->
+                            </section>
+                            <!--/-->
+                        </li>
+                        <li data-tab-content="dashboard-manage-product-tab-2">
+                            <!--Manage Product-->
+                            <section class="section section-dashboard-manage-product">
+                                <div class="container">
+                                    <div class="row row-md">
+                                        <div class="col-12 col-sm-12 col-md-12 col-lg-8">
+                                            <!--Panel-->
+                                            <div class="el-panel el-panel-admin">
+                                                <div class="el-panel-body">
+                                                    <div class="row mb-10">
+                                                        <div class="col-6">
+                                                            <h6>ارتقا به آگهی فوری</h6>
+                                                        </div>
+                                                        <div class="col-6 text-left">
+                                                            <h6 class="text-primary">12,۰۰۰ تومان</h6>
+                                                        </div>
+                                                    </div>
+                                                    <p class="mb-30">آگهی شما به مدت 7 روز با برچسب فوری نشان داده می‌شود. این امکان علاوه بر ایجاد تمایز ظاهری و جلب توجه بیشتر برای آگهی شما، شرایط نمایش در دسته بندی فوری را فراهم می‌سازد.</p>
+                                                    <a href="{% url 'payment:request' item_id=product.id item_type='آگهی فوری'%}" class="button button-md bg-warning">
+                                                        <span class="text text-light">پرداخت اینترنتی</span>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <!--/-->
+                                            <!--Panel-->
+                                            <div class="el-panel el-panel-admin">
+                                                <div class="el-panel-body">
+                                                    <div class="row mb-10">
+                                                        <div class="col-6">
+                                                            <h6>ارتقا به آگهی نردبان</h6>
+                                                        </div>
+                                                        <div class="col-6 text-left">
+                                                            <h6 class="text-primary">8,۰۰۰ تومان</h6>
+                                                        </div>
+                                                    </div>
+                                                    <p class="mb-30">آگهی شما تا زمان دریافت آگهی تازه‌تر در همان دسته‌بندی و شهر، به عنوان اولین آگهی نمایش داده می‌شود.</p>
+                                                    <a href="{% url 'payment:request' item_id=product.id item_type='آگهی نردبان'%}" class="button button-md bg-warning">
+                                                        <span class="text text-light">پرداخت اینترنتی</span>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <!--/-->
+                                            <!--Panel-->
+                                            <div class="el-panel el-panel-admin">
+                                                <div class="el-panel-body">
+                                                    <div class="row mb-10">
+                                                        <div class="col-6">
+                                                            <h6>ارتقا به آگهی فوری و نردبان</h6>
+                                                        </div>
+                                                        <div class="col-6 text-left">
+                                                            <h6 class="text-primary">15,۰۰۰ تومان</h6>
+                                                        </div>
+                                                    </div>
+                                                    <p class="mb-30">آگهی شما به مدت 7 روز با برچسب فوری نشان داده می‌شود. این امکان علاوه بر ایجاد تمایز ظاهری و جلب توجه بیشتر برای آگهی شما، شرایط نمایش در دسته بندی فوری را فراهم می‌سازد.</p>
+                                                    <a href="{% url 'payment:request' item_id=product.id item_type='آگهی فوری و نردبان'%}" class="button button-md bg-warning">
+                                                        <span class="text text-light">پرداخت اینترنتی</span>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <!--/-->
+                                        </div>
+                                        <div class="col-12 col-sm-12 col-md-12 col-lg-4">
+                                            <div class="el-panel bg-color-1">
+                                                <div class="el-panel-body text-center">
+                                                    <h4 class="text-light">وضعیت آگهی</h4>
+                                                    <span class="text-color" style="font-size: 18px;">{{ product.get_status_display }}</span>
+                                                </div>
+                                            </div>
+                                            <div class="el-panel bg-color-2">
+                                                <div class="el-panel-body text-center">
+                                                    <h4 class="text-light">زمان ایجاد آگهی</h4>
+                                                    <span class="text-color" style="font-size: 18px;">{{ product.created_at|naturaltime }}</span>
+                                                </div>
+                                            </div>
+                                            <div class="el-panel bg-color-4">
+                                                <div class="el-panel-body text-center">
+                                                    <h4 class="text-light">زمان تا ابطال آگهی</h4>
+                                                    <span class="text-color" style="font-size: 18px;">{{ product.days_until_expiration }} روز دیگر</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                            <!--/-->
+                        </li>
+                    </ul>
+                </div>
+                <!--/-->
+            </div>
+        </div>
+    </div>
+</section>
+{% endif %}
+{% endblock content %}

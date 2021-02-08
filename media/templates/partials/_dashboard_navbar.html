@@ -1,0 +1,64 @@
+<div class="col-12 col-sm-12 col-md-12 col-lg-4">
+    <div class="el-panel">
+        <div class="el-panel-body">
+            <div class="el-panel-title">
+                <h3>تنظیمات کاربری</h3>
+            </div>
+            <ul class="el-list-icon">
+                <li>
+                    <a href="{% url 'accounts:home' %}">
+                        <i class="fa fa-cog"></i>
+                        <span class="text">داشبورد</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'accounts:profile' %}">
+                        <i class="fa fa-cog"></i>
+                        <span class="text">پنل کاربری</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'accounts:rent-create' %}">
+                        <i class="fa fa-cog"></i>
+                        <span class="text">درج آگهی رایگان</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'accounts:my-ads' %}">
+                        <i class="fa fa-cog"></i>
+                        <span class="text">همه آگهی های من</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'accounts:my-favorites' %}">
+                        <i class="fa fa-cog"></i>
+                        <span class="text">آگهی های مورد علاقه</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'mysite:page-how-it-work' %}">
+                        <i class="fa fa-cog"></i>
+                        <span class="text">آموزش استفاده از سایت</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'mysite:page-contact' %}">
+                        <i class="fa fa-cog"></i>
+                        <span class="text">تماس با مدیریت رنت کالا</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="el-panel el-panel-advert overlay-color overlay-image" style="background-image: url(assets/images/backgrounds/3.jpg);">
+        <span class="bg-color bg-dark-60"></span>
+        <div class="el-panel-body">
+            <h3>درج آگهی ویژه</h3>
+            <p>توضیحات مربوط به در آگهی، مثل توضیح بدید چرا باید از سایت شما استفاده کنند؟ چه برتری ای نسبت به رقبا دارید؟</p>
+            <a href="{% url 'mysite:page-contact' %}" class="button button-md button-block button-secondary">
+                <span class="wave-hover"></span>
+                <span class="text">درج آگهی ویژه</span>
+            </a>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,467 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <title>{% block title %}{% endblock %}RentKala</title>
+    <meta charset="UTF-8" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta name="theme-color" content="#ffffff">
+    <meta name="msapplication-TileColor" content="#000000">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <base href="">
+    <!--
+    ========================================================================
+    Caffe Ejare
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    Template Name   : Caffe Ejare
+    Author          : @Kourosh-Neyestani
+    Author URI      : http://afracode.com
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    Copyright (c) 2020 - @www.Afracode.com
+    ========================================================================
+    -->
+    <link rel="shortcut icon" href="{% static 'assets/favicon.ico' %}" />
+    <link rel="stylesheet" href="{% static 'assets/css/plugins.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'assets/css/styles.css' %}" />
+    <link rel="stylesheet" href="{% static 'assets/css/custom.css' %}" />
+    <link rel="stylesheet" href="{% static 'star-ratings/css/star-ratings.css' %}">
+    <link rel="shortcut icon" href="{% static 'assets/favicon.ico' %}" />
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'assets/apple-touch-icon.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'assets/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'assets/favicon-16x16.png' %}">
+    <link rel="manifest" href="{% static 'assets/site.webmanifest' %}">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+</head>
+
+<body>
+    <!--Preloader-->
+    <div id="preloader" class="preloader">
+        <div class="preloader-inner">
+            <div class="preloader-6">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+    </div>
+    <!--/-->
+    <!--Header-->
+    <header class="app-header app-header-1 glass">`
+        <div class="container">
+            <div class="header-wrap">
+                <button class="button button-menu button-open-sidenav">
+                    <span></span>
+                </button>
+                <!-- <div class="header-logo">
+                    <a href="">
+                        <span class="logo-text">کافه اجاره</span>
+                    </a>
+                </div> -->
+                <div class="header-logo d-block" style="width: 60px; position: relative;top: 16px;margin-left: 45px;">
+                    <a href="https://rentkala.co/">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 583.13 583.13">
+                            <defs>
+                                <style>
+                                    .cls-1 {
+                                        fill: #008c63;
+                                    }
+                                </style>
+                            </defs>
+                            <g id="Layer_2" data-name="Layer 2">
+                                <g id="Layer_1-2" data-name="Layer 1">
+                                    <path class="cls-1" d="M407.66,58.13A117.46,117.46,0,0,1,525,175.46V525H175.46A117.46,117.46,0,0,1,58.13,407.66V58.13H407.66m0-58.13H0V407.66A175.47,175.47,0,0,0,175.46,583.13H583.13V175.46A175.47,175.47,0,0,0,407.66,0Z" />
+                                    <path class="cls-1" d="M329,210.43l-.23.35L293,262.67,254.82,318a3.82,3.82,0,0,0,0,4.38l69.24,100.47a3.87,3.87,0,0,1-3.2,6.07H260.35a3.86,3.86,0,0,1-3.19-1.68L223,377.77h-.11l-38.5-55.88a3.76,3.76,0,0,0-3.14-1.65H120.42a3.86,3.86,0,0,1-3.19-6l34.43-49.89a3.76,3.76,0,0,1,3.14-1.65h66.25a3.78,3.78,0,0,0,3.14-1.65l30.48-44.21a3.83,3.83,0,0,0-3.15-6H125.83a3.84,3.84,0,0,1-1.65-.35,3.88,3.88,0,0,1-1.54-5.68l34.43-49.89a3.76,3.76,0,0,1,3.14-1.65H298.54C328,153.21,345.4,186.1,329,210.43Z" />
+                                    <path class="cls-1" d="M394.72,322.39,464,422.86a3.87,3.87,0,0,1-3.19,6.07H400.24a3.89,3.89,0,0,1-3.19-1.68l-34.11-49.48h-.12l-38.15-55.38a3.89,3.89,0,0,1,0-4.38l38.11-55.34h.12l34.73-50.56a3.88,3.88,0,0,1,3.19-1.68h60.63a3.88,3.88,0,0,1,3.19,6.08l-70,101.5A3.79,3.79,0,0,0,394.72,322.39Z" />
+                                </g>
+                            </g>
+                        </svg>
+                    </a>
+                </div>
+                <div class="header-menu">
+                    <ul>
+                        <li>
+                            <a href="{% url 'mysite:index' %}">
+                                <span class="text">برگ نخست</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{% url 'mysite:search' %}">
+                                <span class="text">همه آگهی ها</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{% url 'mysite:page-faq' %}">
+                                <span class="text">سوالات متداول</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{% url 'mysite:page-how-it-work' %}">
+                                <span class="text">چطور کار می کند؟</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="header-links">
+                    {% if request.user.is_authenticated %}
+                    <a href="{% url 'accounts:home' %}" class="button button-icon button-icon-md button-line-gray bg-light">
+                        <i class="fa fa-user"></i>
+                    </a>
+                    {% else %}
+                    <a href="{% url 'login' %}" class="button button-icon button-icon-md button-line-gray bg-light">
+                        <i class="fa fa-user"></i>
+                    </a>
+                    {% endif %}
+                    <a href="{% url 'mysite:search' %}" class="button button-icon button-icon-md button-line-gray bg-light">
+                        <i class="fa fa-search"></i>
+                    </a>
+                    {% if request.user.is_authenticated %}
+                    <a href="{% url 'accounts:rent-create' %}" class="button button-md button-primary">
+                        <span class="text">درج آگهی رایگان</span>
+                    </a>
+                    {% else %}
+                    <a href="{% url 'login' %}" class="button button-md button-primary">
+                        <span class="text">درج آگهی رایگان</span>
+                    </a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </header>
+    <!--/-->
+    <!--Sidenav-->
+    <div class="app-sidenav app-sidenav-1">
+        <div class="sidenav-menu">
+            <div class="sidenav-head">
+                <img src="{% static 'assets/images/sidenav.jpg' %}" alt="sidenav banner">
+                <button class="button button-close-sidenav"></button>
+            </div>
+            <div class="sidenav-body">
+                <div class="sidenav-body-inner">
+                    <div class="sidenav-links">
+                        <a href="{% url 'register' %}" class="button button-md button-block button-line-primary">
+                            <span class="text">ثبت نام در سایت</span>
+                        </a>
+                        <a href="{% url 'login' %}" class="button button-md button-block button-primary">
+                            <span class="text">درج آگهی رایگان</span>
+                        </a>
+                    </div>
+                    <ul>
+                        <li>
+                            <a href="{% url 'mysite:index' %}">
+                                <span class="text">برگ نخست</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{% url 'mysite:search' %}">
+                                <span class="text">همه آگهی ها</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{% url 'mysite:page-faq' %}">
+                                <span class="text">سوالات متداول</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{% url 'mysite:page-faq' %}">
+                                <span class="text">چطور کار می کند؟</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <span class="sidenav-close"></span>
+    </div>
+<!--/-->
+
+
+{% block content %}
+
+{% endblock %}
+
+
+<!--Footer-->
+<footer class="app-footer">
+    <figure class="section-shape shape-1">
+        <img class="img-fluid" src="{% static 'assets/images/shapes/1.svg' %}" alt="Image Description">
+    </figure>
+    <figure class="section-shape shape-2">
+        <img class="img-fluid" src="{% static 'assets/images/shapes/2.svg' %}" alt="Image Description">
+    </figure>
+    <div class="footer-info">
+        <div class="container">
+            <div class="el-cta el-cta-4">
+                <h3>ثبت <span class="text-primary">آگهی رایگان!</span> کالاهای که نمی خوای رو اجاره بده.</h3>
+                <p>اولین و معتبرترین پلتفرم اجاره کالا در ایران.</p>
+                {% if request.user.is_authenticated %}
+                <a href="{% url 'accounts:rent-create' %}" class="button button-md button-primary">
+                    <span class="text">درج آگهی رایگان</span>
+                </a>
+                {% else %}
+                <a href="{% url 'login' %}" class="button button-md button-primary">
+                    <span class="text">درج آگهی رایگان</span>
+                </a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <div class="footer-widgets">
+        <div class="container">
+            <div class="footer-widgets-links">
+                <div class="row row-xl-5">
+                    <div class="col-6 col-sm-6 col-md-3 col-lg-3 col-xl-3">
+                        <div class="widget widget-links">
+                            <div class="widget-title">
+                                <h4>راهنمای سایت</h4>
+                            </div>
+                            <div class="widget-body">
+                                <ul>
+                                    <li>
+                                        <a href="{% url 'mysite:page-faq' %}">
+                                            <span class="icon ti-angle-left"></span>
+                                            <span class="text">سوالات متداول</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{% url 'mysite:page-policy' %}">
+                                            <span class="icon ti-angle-left"></span>
+                                            <span class="text">قوانین سایت</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-sm-6 col-md-3 col-lg-3 col-xl-3">
+                        <div class="widget widget-links">
+                            <div class="widget-title">
+                                <h4>دسترسی سریع</h4>
+                            </div>
+                            <div class="widget-body">
+                                <ul>
+                                    <li>
+                                        <a href="{% url 'mysite:search' %}">
+                                            <span class="icon ti-angle-left"></span>
+                                            <span class="text">همه آگهی ها</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{% url 'register' %}">
+                                            <span class="icon ti-angle-left"></span>
+                                            <span class="text">ثبت نام در سایت</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-sm-6 col-md-3 col-lg-3 col-xl-3">
+                        <div class="widget widget-links">
+                            <div class="widget-title">
+                                <h4>ارتباط با ما</h4>
+                            </div>
+                            <div class="widget-body">
+                                <ul>
+                                    <li>
+                                        <a href="{% url 'mysite:about' %}">
+                                            <span class="icon ti-angle-left"></span>
+                                            <span class="text">درباره ما</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{% url 'mysite:page-contact' %}">
+                                            <span class="icon ti-angle-left"></span>
+                                            <span class="text">تماس با ما</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-sm-6 col-md-3 col-lg-3 col-xl-3">
+                        <div class="widget widget-links">
+                            <div class="widget-title">
+                                <h4>ما را دنبال کنید</h4>
+                            </div>
+                            <div class="widget-body">
+                                <ul>
+                                    <li>
+                                        <a href="https://www.instagram.com/rentkala/" target="_blank">
+                                            <span class="icon ti-angle-left"></span>
+                                            <span class="text">اینستاگرام رنت کالا</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://t.me/rentkala" target="_blank">
+                                            <span class="icon ti-angle-left"></span>
+                                            <span class="text">کانال تلگرام رنت کالا</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-sm-6 col-md-3 col-lg-3 col-xl-3">
+                        <div class="widget widget-enamad">
+                            <div class="widget-body">
+                                <a target="_blank" rel="origin" href="https://trustseal.enamad.ir/?id=189008&amp;Code=aKGAqNi5bVhlqO1hH03i"><img src="https://Trustseal.eNamad.ir/logo.aspx?id=189008&amp;Code=aKGAqNi5bVhlqO1hH03i" alt="" style="cursor:pointer" id="aKGAqNi5bVhlqO1hH03i"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-copyright">
+        <div class="container">
+            <p>کلیه حقوق این سایت به RentKala متعلق است.</p>
+            <p class="text-right"> این سایت هیچگونه مسؤلیتي در قبال اجاره كننده كالا و اجاره دهنده كالا ندارد و صرفا محیطي ست براي جستجو وسیله مورد نظر شما و مسولیت تمام موارد اجاره دهنده و اجاره گیرنده به عهده ي خود شخص میباشد.</p>
+        </div>
+    </div>
+</footer>
+<!--/-->
+<!--Scripts-->
+{% block js %} {% endblock %}
+
+<script src="{% static 'assets/js/jquery.min.js' %}"></script>
+<script src="{% static 'assets/js/plugins.min.js' %}"></script>
+<script src="{% static 'assets/js/main-scripts.js' %}"></script>
+<script src="{% static 'assets/js/custom.js' %}"></script>
+<script src="{% static 'assets/js/dashboard.js' %}"></script>
+<script src="{% static 'star-ratings/js/dist/star-ratings.min.js' %}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
+
+{% if not request.user.is_authenticated %}
+<!--If ! user logged in-->
+<div data-modal-id="modal-login-form" class="el-modal-overlay">
+    <span class="modal-close modal-close-overlay"></span>
+    <div class="modal-wrapper">
+        <!--Modal-->
+        <div class="el-modal modal-sm">
+            <div class="modal-tabs">
+                <ul class="modal-tabs-head">
+                    <li class="active" data-modal-tab-link="modal-content-1">
+                        <span class="text">ورود به سایت</span>
+                    </li>
+                    <li data-modal-tab-link="modal-content-2">
+                        <span class="text">ثبت نام در سایت</span>
+                    </li>
+                </ul>
+                <ul class="modal-tabs-body">
+                    <li class="active" data-modal-tab-content="modal-content-1">
+                        <form action="" class="form-3">
+                            <div class="row row-xs">
+                                <div class="col-12">
+                                    <div class="form-item">
+                                        <label class="form-label">پست الکترونیک</label>
+                                        <input type="email" name="email" class="text-left">
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-item">
+                                        <label class="form-label">رمز ورود به سایت</label>
+                                        <input type="password" name="password" class="text-left">
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-item form-input-q">
+                                        <div class="row">
+                                            <div class="col">
+                                                <div class="input-checkbox">
+                                                    <label class="checkbox-wrap" for="input-remember">
+                                                        <span class="checkbox-label">مرا به خاطر بسپار</span>
+                                                        <input type="checkbox" name="remember" id="input-remember">
+                                                        <span class="checkbox-mark"></span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="col text-left">
+                                                <a href="forget-password.html" class="input-fp">رمزم را فراموش کرده ام</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="form-item">
+                                <button class="button button-md button-block button-secondary" type="submit">
+                                    <span class="texr">ورود به سایت</span>
+                                </button>
+                            </div>
+                        </form>
+                    </li>
+                    <li data-modal-tab-content="modal-content-2">
+                        <form action="" class="form-3">
+                            <div class="row row-xs">
+                                <div class="col-12">
+                                    <div class="form-item">
+                                        <label class="form-label">نام و نام خانوادگی</label>
+                                        <input type="text" name="name" class="text-left">
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-item">
+                                        <label class="form-label">پست الکترونیک</label>
+                                        <input type="email" name="email" class="text-left">
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-item">
+                                        <label class="form-label">رمز ورود به سایت</label>
+                                        <input type="password" name="password" class="text-left">
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-item form-input-q">
+                                        <div class="row">
+                                            <div class="col">
+                                                <div class="input-checkbox">
+                                                    <label class="checkbox-wrap" for="input-remember">
+                                                        <span class="checkbox-label">کلیه <a href="page-policy.html" target="_blank" class="text-primary">قوانین و مقررات</a> را میپذیرم.</span>
+                                                        <input type="checkbox" name="remember" id="input-remember">
+                                                        <span class="checkbox-mark"></span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="form-item">
+                                <button class="button button-md button-block button-secondary" type="submit">
+                                    <span class="texr">ثبت نام در سایت</span>
+                                </button>
+                            </div>
+                        </form>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!--/-->
+    </div>
+</div>
+<!--/-->
+{% endif %}
+
+<div class="check-user-device">
+    <div class="display-center text-center">
+        <span>دیوایس شما نا معتبر می باشد. به زودی این مشکل رو حل می کنیم.</span>
+    </div>
+</div>
+</body>
+</html>
+
+
+
